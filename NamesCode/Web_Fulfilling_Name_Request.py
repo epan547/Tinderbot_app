@@ -9,7 +9,7 @@ import string
 reddit = praw.Reddit(client_id='fAkqHqn2XyBt3g',
                      client_secret="B1Rv2IY6KfA3PusqSeaFAu8brIw",
                      user_agent='USERAGENT')
-import enchant #may need to pip install pyenchant
+#import enchant #may need to pip install pyenchant
 import itertools
 import numpy
 
@@ -187,92 +187,6 @@ def return_palindrome_PULine(name):
     print(name.title() + " is a palindrome.")
     return [name.title() + " - your name is a palindrome, I like it. I'd do you forwards and backwards"]
 
-def return_anagram_PULine_D(name):
-
-    pickuplines = []
-    if len(name)> 8:
-        return pickuplines
-
-    named = name.lower()+'d'
-    named = named.replace(' ', "")
-    english_dictionary = enchant.Dict("en_US")
-    spanish_dictionary = enchant.Dict("es_ES")
-
-    list_of_all_anagrams = ["".join(perm) for perm in itertools.permutations(named)]
-
-    list_of_real_anagrams = []
-    spanish = False
-    for i in list_of_all_anagrams:
-        if english_dictionary.check(i):
-            list_of_real_anagrams.append(i)
-
-    if not list_of_real_anagrams:
-        spanish = True
-        for i in list_of_all_anagrams:
-            if spanish_dictionary.check(i):
-                list_of_real_anagrams.append(i)
-
-    if not spanish:
-        for i in list_of_real_anagrams:
-            pickuplines.append(name.title() + ", if you add a D to your name, it's an anagram for the word "
-                       + i
-                       + ". So I guess the question is - do you want the D?")
-            list_of_real_anagrams.remove(i)
-    else:
-        for i in list_of_real_anagrams:
-            pickuplines.append(name.title() + ", if you add a D to your name, it's an anagram for the Spanish word "
-                       + i
-                       + ". So I guess the question is - do you want the D?")
-            list_of_real_anagrams.remove(i)
-    if pickuplines:
-        print(name.title()+" has at least one anagram.")
-    return pickuplines
-
-def return_anagram_PULine_V(name):
-
-    pickuplines = []
-    if len(name)> 8:
-        print("Name is too long for anagrams.")
-        return pickuplines
-
-    named = name.lower()+'v'
-    named = named.replace(" ", "")
-    named = named.replace(string.punctuation, "")
-    english_dictionary = enchant.Dict("en_US")
-    spanish_dictionary = enchant.Dict("es_ES")
-
-    list_of_all_anagrams = ["".join(perm) for perm in itertools.permutations(named)]
-
-    list_of_real_anagrams = []
-
-    spanish = False
-    for i in list_of_all_anagrams:
-        if english_dictionary.check(i):
-            list_of_real_anagrams.append(i)
-
-    if not list_of_real_anagrams:
-        spanish = True
-        for i in list_of_all_anagrams:
-            if spanish_dictionary.check(i):
-                list_of_real_anagrams.append(i)
-
-    if not spanish:
-        for i in list_of_real_anagrams:
-            pickuplines.append(name.title() + ", if you add a V to your name, it's an anagram for the word "
-                       + i
-                       + ". So I guess the question is - do you want the V?")
-            list_of_real_anagrams.remove(i)
-    else:
-        for i in list_of_real_anagrams:
-            pickuplines.append(name.title() + ", if you add a V to your name, it's an anagram for the Spanish word "
-                       + i
-                       + ". So I guess the question is - do you want the V?")
-            list_of_real_anagrams.remove(i)
-
-    if pickuplines:
-        print(name.title()+" has at least one anagram.")
-
-    return pickuplines
 
 def gather_all_PU_lines_for_a_name(name):
     names_list = create_list_of_near_names(name)
@@ -282,8 +196,8 @@ def gather_all_PU_lines_for_a_name(name):
             PULines+=return_reddit_PULine(each_name)
         try:
             PULines+=return_palindrome_PULine(name)
-            PULines+=return_anagram_PULine_D(name)
-            PULines+=return_anagram_PULine_V(name)
+            #PULines+=return_anagram_PULine_D(name)
+            #PULines+=return_anagram_PULine_V(name)
         except:
             print("Failed palindrome/anagram line generation.")
             pass
