@@ -7,7 +7,6 @@ gevent==1.2.2
 glob2==0.5
 gmpy2==2.0.8
 google==2.0.1
-googlemaps==2.5.1
 greenlet==0.4.12
 gunicorn==19.8.1
 h5py==2.7.0
@@ -44,7 +43,6 @@ mistune==0.7.4
 mpmath==0.19
 msgpack-python==0.4.8
 multipledispatch==0.4.9
-navigator-updater==0.1.0
 nbconvert==5.3.1
 nbformat==4.4.0
 networkx==2.0
@@ -87,7 +85,6 @@ pycrypto==2.6.1
 pycurl==7.43.0
 pyenchant==2.0.0
 pyflakes==1.6.0
-pygame==1.9.3
 Pygments==2.2.0
 pylint==1.7.4
 pyodbc==4.0.17
@@ -111,8 +108,6 @@ requests==2.18.4
 rope==0.10.5
 ruamel-yaml==0.11.14
 s3transfer==0.1.13
-scikit-image==0.13.0
-scikit-learn==0.19.1
 scipy==1.0.1
 seaborn==0.8
 simplegeneric==0.8.1
@@ -145,7 +140,6 @@ wcwidth==0.1.7
 webencodings==0.5.1
 Werkzeug==0.12.2
 widgetsnbextension==3.0.2
-wikipedia==1.4.0
 wrapt==1.10.11
 WTForms==2.1
 xlrd==1.1.0
