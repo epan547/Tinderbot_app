@@ -1746,10 +1746,10 @@
 
 	footer button#front {
 		width: 8em;
-		height: 2em;
 		text-align: center;
-		padding: auto;
+		padding: 1em 2em 1em 2em;
 		margin-left: 1em;
+		cursor: pointer;
 	}
 
 	footer button#display {
@@ -1822,17 +1822,150 @@ footer button:hover .overlay {
 	background-position: center;
 }
 
-	/* Hide the browser's default radio button */
-.container-sp input {
-  opacity: 0;
-	width: 3em;
-	height: 3em;
-	align-self: center;
+/*
+  Hide radio button (the round disc)
+  we will use just the label to create pushbutton effect
+*/
+input[type=radio] {
+    display:none;
+    margin:10px;
 }
 
-form input[type="radio"] {
+/*
+  Change the look'n'feel of labels (which are adjacent to radiobuttons).
+  Add some margin, padding to label
+*/
+input[type=radio] + label {
+    display:inline-block;
+    margin:-2px;
+    padding: 4px 12px;
+    background-color: #e7e7e7;
+    border-color: #000;
+		font-size: 1em;
+}
+
+input[type=radio]#radio1 + label,
+input[type=radio]#radio11 + label,
+input[type=radio]#radio111 + label {
+	text-align: center;
 	width: 3em;
 	height: 3em;
+	padding: .5em 0em 1em 0em;
+	background-size: 3em 3em;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: inherit;
+	color: transparent;
+	background-image: url(https://cdn.iconscout.com/public/images/icon/free/png-512/face-smile-happy-emoji-39f978390f86ad27-512x512.png);
+}
+
+input[type=radio]#radio2 + label,
+input[type=radio]#radio22 + label,
+input[type=radio]#radio222 + label {
+	text-align: center;
+	width: 3em;
+	height: 3em;
+	padding: .5em 0em 1em 0em;
+	background-size: 3em 3em;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: inherit;
+	color: transparent;
+	background-image: url(https://cdn.iconscout.com/public/images/icon/free/png-512/deadpan-face-neutral-sad-emoji-365402ed0fa89a04-512x512.png);
+}
+
+input[type=radio]#radio3 + label,
+input[type=radio]#radio33 + label,
+input[type=radio]#radio333 + label {
+	text-align: center;
+	width: 3em;
+	height: 3em;
+	padding: .5em 0em 1em 0em;
+	background-size: 3em 3em;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: inherit;
+	color: transparent;
+	background-image: url(https://cdn.iconscout.com/public/images/icon/free/png-512/face-frown-big-sad-emoji-3615d98598f9cedc-512x512.png);
+}
+
+input[type=radio]#radio4 + label,
+input[type=radio]#radio44 + label,
+input[type=radio]#radio444 + label {
+	text-align: center;
+	width: 3em;
+	height: 3em;
+	padding: .5em 0em 1em 0em;
+	background-size: 3em 3em;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: inherit;
+	color: transparent;
+	background-image: url(http://www.clker.com/cliparts/1/1/9/2/12065738771352376078Arnoud999_Right_or_wrong_5.svg.hi.png);
+}
+
+/*
+ Change background color for label next to checked radio button
+ to make it look like highlighted button
+*/
+input[type=radio]#radio1:checked + label,
+input[type=radio]#radio11:checked + label,
+input[type=radio]#radio111:checked + label {
+	/* color: white; */
+	background-color:#ef8376;
+	/* background-image: None; */
+	text-align: center;
+}
+
+input[type=radio]#radio1:hover + label,
+input[type=radio]#radio11:hover + label,
+input[type=radio]#radio111:hover + label {
+	 /* color: white; */
+	 background-color:#ef8376;
+	 /* background-image: None; */
+	 text-align: center;
+}
+
+input[type=radio]#radio2:checked + label,
+input[type=radio]#radio22:checked + label,
+input[type=radio]#radio222:checked + label {
+	/* color: white; */
+	background-color:#ef8376;
+	/* background-image: None; */
+	text-align: center;
+}
+
+input[type=radio]#radio2:hover + label,
+input[type=radio]#radio22:hover + label,
+input[type=radio]#radio222:hover + label {
+	 /* color: white; */
+	 background-color:#ef8376;
+	 /* background-image: None; */
+	 text-align: center;
+}
+
+input[type=radio]#radio3:checked + label,
+input[type=radio]#radio33:checked + label,
+input[type=radio]#radio333:checked + label,
+input[type=radio]#radio3:hover + label,
+input[type=radio]#radio33:hover + label,
+input[type=radio]#radio333:hover + label {
+	/* color: white; */
+	background-color:#ef8376;
+	/* background-image: None; */
+	text-align: center;
+}
+
+input[type=radio]#radio4:checked + label,
+input[type=radio]#radio44:checked + label,
+input[type=radio]#radio444:checked + label,
+input[type=radio]#radio4:hover + label,
+input[type=radio]#radio44:hover + label,
+input[type=radio]#radio444:hover + label {
+	/* color: white; */
+	background-color:#ef8376;
+	/* background-image: None; */
+	text-align: center;
 }
 
 /* Image */
@@ -2227,6 +2360,39 @@ form input[type="radio"] {
 		text-align: center;
 		padding: 7.5em 0 2em 0;
 		cursor: default;
+	}
+
+	#header1 {
+		position: relative;
+		height: 100%;
+		height: 100vh;
+		background: linear-gradient( #ff655b, #ff5864, #fd297b);
+		background-size: cover;
+		background-position: center center;
+		background-attachment: fixed;
+		color: #fff;
+		text-align: center;
+		padding: 7.5em 3em 2em 3em;
+		cursor: default;
+	}
+
+	#header1:before {
+		content: '';
+		vertical-align: middle;
+		height: 100%;
+	}
+
+	#header1 .inner {
+		position: relative;
+		z-index: 1;
+		margin: 0;
+		padding-top: 4.5em;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	article h3 {
+		line-height: 1.25em;
 	}
 
 		#header:before {

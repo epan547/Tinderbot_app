@@ -20,22 +20,50 @@ def about():
     return render_template('about.html')
 
 @app.route('/display/', methods = ['POST','GET'])
-def display(PULs=None):
+def display(PULs=None,keyname=None):
     PULs = request.args['PULs']  # counterpart for url_for()
+    Name = request.args['keyname']
     message = json.loads(PULs)
     if request.method == 'POST':
-        #RadioField('training', choices=[('good','bad','ok','wrong')])
-        train = request.form.get('training1')
-        modifier = 0
-        if train == 'good':
-            modifier = 2
-        if train == 'ok':
-            modifier = 1
-        if train == 'bad':
-            modifier = -2
-        if train == 'wrong':
-            modifier = -3
-        print(train,modifier)
+        # Getting weight for PUL1
+        train1 = request.form.get('training1')
+        modifier1 = 0
+        if train1 == 'good':
+            modifier1 = 2
+        if train1 == 'ok':
+            modifier1 = 1
+        if train1 == 'bad':
+            modifier1 = -2
+        if train1 == 'wrong':
+            modifier1 = -3
+        train_names(Name,message[0],modifier1)
+
+        # Getting weight for PUL2
+        train2 = request.form.get('training2')
+        modifier2 = 0
+        if train2 == 'good':
+            modifier2 = 2
+        if train2 == 'ok':
+            modifier2 = 1
+        if train2 == 'bad':
+            modifier2 = -2
+        if train2 == 'wrong':
+            modifier2 = -3
+        train_names(Name,message[1],modifier2)
+
+        # Getting weight for PUL3
+        train3 = request.form.get('training3')
+        modifier3 = 0
+        if train3 == 'good':
+            modifier3 = 2
+        if train3 == 'ok':
+            modifier3 = 1
+        if train3 == 'bad':
+            modifier3 = -2
+        if train3 == 'wrong':
+            modifier3 = -3
+        train_names(Name,message[2],modifier3)
+
         return redirect(url_for('index'))
     return render_template('display.html', PULs=message)
 
@@ -43,12 +71,12 @@ def display(PULs=None):
 def namebot():
     if request.method == 'POST':
         # do stuff when the form is submitted
-        keyword = request.form['keyword']
+        name = request.form['keyword']
         # name = request.form['nameword']
         # redirect to end the POST handling
         # the redirect can be to the same route or somewhere else
         # os.system("Web_Fulfilling_Name_Request.py " + str(keyword))
-        PULs = get_names(str(keyword))
+        PULs = get_names(str(name))
         print(PULs)
         if PULs == "No Lines.":
             PULs = get_names("random")
@@ -59,11 +87,18 @@ def namebot():
             extra = get_names('random')
             PULs = PULs.append(extra[1])
         messages = json.dumps(PULs)
-        return redirect(url_for('display',PULs=messages))
+        return redirect(url_for('display',PULs=messages, keyname=name))
 
     # show the form, it wasn't submitted
     return render_template('namebot.html')
 
+@app.route('/temp_display/')
+# Temporary display that just displays PULs, no trainng involved.
+def temp_display(PULs=None,keyname=None):
+    PULs = request.args['PULs']  # counterpart for url_for()
+    Keyword = request.args['keyname']
+    message = json.loads(PULs) #pickuplines in readable form
+    return render_template('temp_display.html', PULs=message)
 
 @app.route('/categorybot', methods = ['POST','GET'])
 def categorybot():
@@ -73,7 +108,7 @@ def categorybot():
         list_and_cat = get_category_lines(keyword)
         PULs = list_and_cat[0]
         cat_dict = list_and_cat[1]
-        if PULs is None:
+        if PULs is None or len(PULs) < 1:
             PULs = get_names("random")
             print('hi')
         elif len(PULs) == 1:
@@ -81,12 +116,12 @@ def categorybot():
             PULs += extra[0:2]
         elif len(PULs) == 2:
             extra = get_names('random')
-            PULs = PULs.append(extra[1])
+            PULs += extra[1]
             print('hello')
         print(PULs, type(PULs))
             # Replace this with the categories later
         messages = json.dumps(PULs)
-        return redirect(url_for('display',PULs=messages))
+        return redirect(url_for('temp_display', PULs=messages, keyname=keyword))
 
     # show the form, it wasn't submitted
     return render_template('categorybot.html')
