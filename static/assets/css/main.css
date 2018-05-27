@@ -1746,6 +1746,7 @@ footer button{
 
 footer button#front {
 	width: auto;
+	height: auto;
 	text-align: center;
 	padding: 1em 2em 1em 2em;
 	margin-left: 1em;
@@ -1858,9 +1859,9 @@ input[type=radio]#radio1 + label,
 input[type=radio]#radio11 + label,
 input[type=radio]#radio111 + label {
 	text-align: center;
-	width: 3em;
-	height: 3em;
-	padding: .5em 0em 1em 0em;
+	width: auto;
+	height: auto;
+	padding: 1em 2em 1em 2em;
 	background-size: 3em 3em;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -2255,14 +2256,15 @@ button,
 .button {
 	position: relative;
 	display: inline-block;
-	color: #fd297b;
-	background-color: #fff;
+	color: #fff;
+	background-color: transparent;
 	text-align: center;
 	font-size: 1em;
 	border-radius: 0.5em;
 	text-decoration: none;
 	height: auto;
-	width: 8em;
+	width: 12em;
+	padding: .5em 2em .5em 2em;
 	border: 2px solid white;
 	cursor: pointer;
 	outline: 0;
