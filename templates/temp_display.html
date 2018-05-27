@@ -30,19 +30,44 @@
 							<form name="train_form" method="post">
 								<article class="display">
 									<h3 id="PUL">{{ PULs[0] }}</h3>
+									<footer>
+										<input type="radio" id="radio1" name="training1" value="good">
+											<label for="radio1">Good</label>
+										<input type="radio" id="radio2" name="training1" value="ok">
+											<label for="radio2">OK</label>
+										<input type="radio" id="radio3" name="training1" value="bad">
+											<label for="radio3">Bad</label>
+										<input type="radio" id="radio4" name="training1" value="wrong">
+											<label for="radio4">Wrong</label><br>
+									</footer>
 									<br>
-                  <br>
-                  <br>
 									<h3 id="PUL">{{ PULs[1] }}</h3>
+									<footer>
+										<input type="radio" id="radio11" name="training2" value="good">
+											<label for="radio11">Good</label>
+										<input type="radio" id="radio22" name="training2" value="ok">
+											<label for="radio22">OK</label>
+										<input type="radio" id="radio33" name="training2" value="bad">
+											<label for="radio33">Bad</label>
+										<input type="radio" id="radio44" name="training2" value="wrong">
+											<label for="radio44">Wrong</label><br>
+									</footer>
 									<br>
-                  <br>
-                  <br>
 									<h3 id="PUL">{{ PULs[2] }}</h3>
+									<footer>
+										<input type="radio" id="radio111" name="training3" value="good">
+											<label for="radio111">Good</label>
+										<input type="radio" id="radio222" name="training3" value="ok">
+											<label for="radio222">OK</label>
+										<input type="radio" id="radio333" name="training3" value="bad">
+											<label for="radio333">Bad</label>
+										<input type="radio" id="radio444" name="training3" value="wrong">
+											<label for="radio444">Wrong</label><br>
+									</footer>
 							<footer>
 								<br>
-                <br>
-								<a href="{{ url_for('index')}}"><button id="display" type="button">Again!</button></a>
-								<button id="display">Help train the bot!</button>
+								<a href="{{ url_for('index')}}"><button id="display" type="submit">Again!</button></a>
+								<button id="display" type="submit">Help train the bot!</button>
 							</footer>
 							</form>
             </div>

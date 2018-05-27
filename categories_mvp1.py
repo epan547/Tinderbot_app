@@ -203,21 +203,23 @@ def give_pickup_lines(key_word,all_dicts,num_lines_weight = 2,num_lines_random =
         pul_list, temp_dict = find_top_weights(new_category,num_lines_weight)
         pul_list1, temp_dict = find_random(temp_dict,num_lines_random)
         pul_list += pul_list1
+        category_dict = new_category
     else:
         num_lines_random, num_lines_weight = check_num_lines(category_dict,num_lines_weight,num_lines_random)
         pul_list, temp_dict = find_top_weights(category_dict,num_lines_weight)
         pul_list1, temp_dict = find_random(temp_dict,num_lines_random)
         pul_list += pul_list1
-    return pul_list, category_dict
+    return pul_list, category_dict, all_dicts
 
 def adjust_weight_web(adjust, key_word ,category_dict, pickup_line, all_dicts):
     """
     Input: yes, no, or wrong as user_input, a key-value pair as pickup_line, the category dictionary the line came from as category_dict, the category name as category_name
     Output: None
     This function adjusts the value associated with a pickup line positively if good, nuetrally if okay negatively if bad, and very negatively if wrong"""
-
+    print("adjusting weight of: " + pickup_line + " by: " + str(adjust))
     category_dict[pickup_line] += adjust
     all_dicts[key_word][pickup_line] += adjust
+    print("This is working!")
     return category_dict, all_dicts
 
 def main(key_word):
